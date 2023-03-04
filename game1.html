@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Tebak Angka</title>
+  </head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+    body{
+      font-family: 'Tilt Neon', cursive;
+    }
+  </style>
+  <body style="background: rgb(255, 0, 106);" > 
+
+    <div class="container">
+
+      <br>
+      <br>
+      <br>
+      <!-- Outer Row -->
+      <div class="row justify-content-center">
+
+          <div class="col-xl-5 col-md-9">
+
+              <div class="card o-hidden border-0 shadow-lg my-5">
+                  <div class="card-body p-0">
+                      <!-- Nested Row within Card Body -->
+                      <div class="row">
+                          <div class="col-sm-6 d-none d-lg-block"></div>
+                          <div class="col-lg-12">
+                              <div class="p-5">
+                                  <div class="text-center">
+                                    <h3>Game Tebak Angka 1 - 100</h3>
+                                    <h6>-Yuwanpy</h6>
+                                  </div>
+                                  <br>
+                                  <br>
+                                      
+                                      <div class="form-group">
+                                          <input class="form-control form-control-user"
+                                          type="number" name="inputan" id="inputan"
+                                              placeholder="Masukan Angka">
+                                      </div>
+                                      <br>
+                                      
+                                      <button class="btn text-white" id="cek" onclick="cekAngka()">
+                                          Cek Angka
+                                      </button>
+                                      <br>
+                                      <br>
+                            
+                               
+                                  <button class="btn text-white" id="reset" onclick="randomAngka()">
+                                    Reset Angka
+                                </button>
+
+                                  <hr>
+                                  <br>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+
+  </div>
+
+
+  <script type="text/javascript">
+
+    var angka;
+    function randomAngka(){
+      var audio = new Audio('reset.wav');
+  audio.play();
+     angka = Math.floor(Math.random() *101);
+     swal({
+  title: "Pesan Anda",
+  text: "Angka Udah Di Reset Yah",
+  icon: "success",
+})
+// .then(function() {
+//   var audio = new Audio('reset.wav');
+//   audio.play();
+// }) 
+     return angka;   
+    }
+    randomAngka();
+    function cekAngka() {
+     var inputan = document.getElementById('inputan').value;
+
+     if (inputan == angka) {
+      var audio = new Audio('benar.wav');
+  audio.play();
+      Swal.fire("YEAY JAWABANADEK BENAR", "angkanya adalah "+angka ,"success");
+     }else if(inputan>100){
+      var audio = new Audio('100.wav');
+  audio.play();
+      Swal.fire("JANGAN MASUKKAN LEBIH DARI 100 ATUH"," ", "error");
+    }else if(inputan<angka){
+      var audio = new Audio('bodohkecil.wav');
+  audio.play();
+      Swal.fire("Angka Terlalu Kecil Dek"," ", "error");
+     }else{
+      var audio = new Audio('besarangka.wav');
+  audio.play();
+      Swal.fire("Angka Terlalu Besar Dek"," ", "error");
+     } 
+    }
+   </script>
+
+  <style>
+    
+    #cek{
+      background: rgb(255, 0, 106);
+         align-items: center;
+         width: 100%;
+        }
+        #reset{
+          background: rgb(255, 0, 106);
+         align-items: center;
+         width: 100%;
+        }
+
+
+@media screen and (max-width: 600px) {
+  body {
+    margin-top: 100px;
+    padding: 15px;
+    font-size: 18px;
+  }
+  
+  header {
+    height: 0px;
+  }
+  
+  /* Menyembunyikan sidebar pada layar kecil */
+  .sidebar {
+    display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  body {
+    margin-top: 100px;
+    padding: 10px;
+    font-size: 12px;
+  }
+  
+  header {
+    height: 0px;
+  }
+  .form-group{
+    padding: -10px;
+  }
+  /* Menyembunyikan sidebar pada layar kecil */
+  .sidebar {
+    display: none;
+  }
+}
+
+        
+  </style>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+  </body>
+</html>
